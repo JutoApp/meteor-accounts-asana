@@ -3,13 +3,13 @@
 /**
  * Register this service (boilerplate).
  */
-Accounts.oauth.registerService('imgur');
+Accounts.oauth.registerService('asana');
 
 /**
  * Client functionality (boilerplate).
  */
 if (Meteor.isClient) {
-  Meteor.loginWithImgur = function(options, callback) {
+  Meteor.loginWithAsana = function(options, callback) {
     
     /**
      * support (options, callback) and (callback)
@@ -23,7 +23,7 @@ if (Meteor.isClient) {
      * 
      */
     var credentialRequestCompleteCallback = Accounts.oauth.credentialRequestCompleteHandler(callback);
-    Imgur.requestCredential(options, credentialRequestCompleteCallback);
+    Asana.requestCredential(options, credentialRequestCompleteCallback);
   };
 
 /**
@@ -36,9 +36,9 @@ if (Meteor.isClient) {
       /**
        * Logged in user gets whitelisted fields + accessToken + expiresAt.
        */
-      Imgur.whitelistedFields.concat(['accessToken', 'expiresAt']), // don't publish refresh token
+      Asana.whitelistedFields.concat(['accessToken', 'expiresAt']), // don't publish refresh token
       function(subfield) {
-        return 'services.imgur.' + subfield;
+        return 'services.asana.' + subfield;
       }),
 
     forOtherUsers: _.map(
@@ -46,9 +46,9 @@ if (Meteor.isClient) {
        * Other users get whitelisted fields without emails, because even with
        * autopublish, no legitimate web app should be publishing all users' emails.
        */
-      _.without(Imgur.whitelistedFields, 'email', 'verified_email'),
+      _.without(Asana.whitelistedFields, 'email', 'verified_email'),
       function(subfield) {
-        return 'services.imgur.' + subfield;
+        return 'services.asana.' + subfield;
       })
   });
 }
