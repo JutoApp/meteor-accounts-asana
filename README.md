@@ -1,4 +1,4 @@
-# tunguska:accounts-imgur
+# juto:accounts-asana
 
 An ES2015 Meteor OAuth handler package for Asana.  Based on the work by Rob Fallows' on his [imgur example](https://github.com/robfallows/tunguska-accounts-imgur) (and [his accompanying oauth package](https://github.com/robfallows/tunguska-imgur)).
 
